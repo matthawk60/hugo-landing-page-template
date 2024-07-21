@@ -1,0 +1,20 @@
+name = 'Landing Page'
+license = 'MIT'
+licenselink = 'https://github.com/owner/repo/LICENSE'
+description = 'A landing page theme for Hugo'
+
+# The home page of the theme, where the source can be found
+homepage = 'https://github.com/matthawk60/hugo-landing-page-template'
+
+# If you have a running demo of the theme
+demosite = 'https://owner.github.io/repo'
+
+# Taxonomy terms
+tags = ['blog', 'company', 'landing page']
+features = ['bootstrap', 'simge page', 'features']
+
+# If the theme has a single author
+[author]
+  name = 'Matt Hawk'
+  homepage = 'https://affinitymarketing.org/'
+
