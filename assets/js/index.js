@@ -1,4 +1,4 @@
-import EffectCarousel from './effect-carousel';
+
 import { DateTime, IANAZone } from 'luxon';
 
 import Modal from "js/bootstrap/src/modal";
@@ -31,7 +31,7 @@ window.onload = function (e) {
 	// eslint-disable-next-line
 	const swiper = new Swiper('.swiper', {
 		// pass EffectCarousel module to modules
-		modules: [EffectCarousel],
+		// modules: [EffectCarousel],
 		// specify "carousel" effect
 		effect: 'carousel',
 		// carousel effect parameters

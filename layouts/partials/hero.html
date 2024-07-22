@@ -110,38 +110,38 @@
         <link
           rel="prefetch"
           as="image"
-          href="https://narconon-us.b-cdn.net{{ $slide_image_small.RelPermalink }}"
+          href="{{ $slide_image_small.RelPermalink }}"
           media="(max-width: 1200px)"
         />
         <link
           rel="prefetch"
           as="image"
-          href="https://narconon-us.b-cdn.net{{ $slide_image_big.RelPermalink }}"
+          href="{{ $slide_image_big.RelPermalink }}"
           media="(min-width: 1200px)"
         />
         <link
           rel="prefetch"
           as="image"
-          href="https://narconon-us.b-cdn.net{{ $blur_image.RelPermalink }}"
+          href="{{ $blur_image.RelPermalink }}"
           media="(min-width: 1200px)"
         />
         <style>
 
           #{{ $slide_id}} {
-            background-image:linear-gradient(0deg, rgba(0, 0, 0, 0.40) 0%, rgba(0, 0, 0, 0.40) 100%), url(https://narconon-us.b-cdn.net{{ $slide_image_small.RelPermalink }});
+            background-image:linear-gradient(0deg, rgba(0, 0, 0, 0.40) 0%, rgba(0, 0, 0, 0.40) 100%), url({{ $slide_image_small.RelPermalink }});
             background-repeat: no-repeat;
             background-size: cover;
             background-position: center;
           }
           @media only screen and (min-width: 1200px) {
             #{{ $slide_id }} {
-              background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.40) 0%, rgba(0, 0, 0, 0.40) 100%), url(https://narconon-us.b-cdn.net{{ $slide_image_big.RelPermalink }});
+              background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.40) 0%, rgba(0, 0, 0, 0.40) 100%), url({{ $slide_image_big.RelPermalink }});
             background-repeat: no-repeat;
             background-size: cover;
             background-position: center;
             }
             #{{ $slide_id -}}-background-blur {
-                background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.40) 0%, rgba(0, 0, 0, 0.40) 100%), url(https://narconon-us.b-cdn.net{{ $blur_image.RelPermalink }});
+                background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.40) 0%, rgba(0, 0, 0, 0.40) 100%), url({{ $blur_image.RelPermalink }});
               background-repeat: no-repeat;
               background-size: cover;
               background-position: center;
