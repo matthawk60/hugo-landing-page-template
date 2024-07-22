@@ -1,0 +1,35 @@
+.bd-footer {
+  height: 350px;
+}
+
+.custom-shape-divider-bottom-1705371914 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+  height: 350px;
+}
+
+.custom-shape-divider-bottom-1705371914 .inner {
+  position: relative;
+  width: 120%;
+  left: 50%;
+  border-radius: 0 0 50% 50%;
+  height: 350px;
+  transform: translate(-50%, -40%);
+}
+
+.custom-shape-divider-bottom-1705371914 .shape-fill {
+  fill: $nn-light-green;
+}
+.custom-shape-divider-bottom-1705371914 .inner-mobile {
+  position: relative;
+  width: 120%;
+  left: 50%;
+  border-radius: 0 0 50% 50%;
+  height: 350px;
+  transform: translate(-50%, -10%);
+}

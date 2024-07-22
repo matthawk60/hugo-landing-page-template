@@ -1,0 +1,78 @@
+{{ $reusablePages := $.Page.Resources.Match "video-slides/slide*" }}
+{{ range sort $reusablePages .Params.weight "desc" }}
+  {{ $slide_image_preload := .Parent.Resources.GetMatch .Params.thumbNail }}
+  <link
+    rel="preload"
+    as="image"
+    href="{{ $slide_image_preload.RelPermalink }}"
+    media="(max-width: 1200px)" />
+
+  <div id="video-modal-{{ .Params.id }}" class="overlay">
+    <button id="video-modal-close" class="btn-close btn-close-white">
+      <span class="visually-hidden">Close</span>
+    </button>
+    <div class="video-modal-content modal-video">
+      <div class="video-modal-body">
+        <div class="ratio ratio-16x9">
+          <video
+            id="stream-player"
+            controls
+            preload="auto"
+            poster="{{ $slide_image_preload.RelPermalink }}"
+            style="border: none"
+            class="position-absolute video-js vjs-default-skin vjs-big-play-centered">
+            <source
+              src="https://customer-psw3rttiu5mrqv5i.cloudflarestream.com/{{- .Params.videoId -}}/manifest/video.m3u8"
+              type="application/x-mpegURL" />
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+{{ end }}
+<div id="app" class="container-fluid p-0">
+  <!-- Carousel slider -->
+
+  <div class="swiper">
+    <div class="swiper-wrapper">
+      {{ range sort $reusablePages .Params.weight "desc" }}
+        {{ $slide_image := .Parent.Resources.GetMatch .Params.thumbNail }}
+        {{ $slide_id := .Params.id }}
+        <div class="swiper-slide" dataslideid="{{ .Params.id }}">
+          <!-- elements with  "swiper-carousel-animate-opacity" class will have animated opacity -->
+          <div class="">
+            <div class="video-thumbnail slowFade">
+              <img
+                src="{{ $slide_image.RelPermalink }}"
+                height="{{ $slide_image.Height }} "
+                width="{{ $slide_image.Width }}" />
+            </div>
+            <div class="slide-content slowFade">
+              <p>{{ .Content }}</p>
+              <h2>{{ .Params.name }}</h2>
+            </div>
+          </div>
+        </div>
+      {{ end }}
+      {{ range sort $reusablePages .Params.weight "desc" }}
+        {{ $slide_image := .Parent.Resources.GetMatch .Params.thumbNail }}
+        {{ $slide_id := .Params.id }}
+        <div class="swiper-slide" dataslideid="{{ .Params.id }}">
+          <!-- elements with  "swiper-carousel-animate-opacity" class will have animated opacity -->
+          <div class="">
+            <div class="video-thumbnail slowFade">
+              <img
+                src="{{ $slide_image.RelPermalink }}"
+                height="{{ $slide_image.Height }}"
+                width="{{ $slide_image.Width }}" />
+            </div>
+            <div class="slide-content slowFade">
+              <p>{{ .Content }}</p>
+              <h2>{{ .Params.name }}</h2>
+            </div>
+          </div>
+        </div>
+      {{ end }}
+    </div>
+  </div>
+</div>

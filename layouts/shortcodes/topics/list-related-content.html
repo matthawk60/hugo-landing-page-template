@@ -1,0 +1,23 @@
+{{/* This will list all possibly silos and sort random (by date?)
+    e.g.: Articles - Alcohol
+          addiction-info - Alcohol
+          addiction - Alcohol 
+    Each needs to have it's own title and each entry, it's own icon - for addiction and addiction info 1 icon.
+    For articles - each type has it's own icon - so possibly addiction info gets broken up by taxonomy category presently in the articles repo. 
+*/}}
+
+{{ $t := .Page.Data.Pages }}
+{{ with $t }}
+<h2>More on This Topic</h2> 
+<section id="related-topic-pages">
+{{ range $i, $page := . }}
+{{ $meta := $page.Params.article_meta }}
+<article>
+    <aside>
+        <img class="icon" src="{{ .FirstSection.Params.article_meta.icon }}"> {{ .FirstSection.Title }}
+    </aside>
+    <a href="{{$page.Permalink}}"><h3>{{ $meta.Title }}</h3></a>
+</article>
+{{ end }}
+</section>
+{{ end }}

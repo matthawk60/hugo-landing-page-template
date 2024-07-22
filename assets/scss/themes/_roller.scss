@@ -1,0 +1,16 @@
+.nn-roller {
+    position: relative;
+
+    @include media-breakpoint-up(lg) {
+        position: absolute;
+        top: 01.25rem;
+        left: 50%;
+        width: 200px;
+        margin-left: -100px;
+    }
+
+    @include media-breakpoint-up(xl) {
+        width: 280px;
+        margin-left: -140px;
+    }
+}

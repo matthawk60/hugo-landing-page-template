@@ -1,0 +1,87 @@
+{{ $reusablePages := $.Page.Resources.Match "map-slides/slide*" }}
+
+
+<div id="map" class="col-12 d-none d-md-block">
+  <!-- Carousel slider -->
+
+  <div
+    class="swiper-map swiper-container position-relative overflow-hidden d-flex flex-column">
+    <div class="swiper-wrapper">
+      {{ range sort $reusablePages .Params.weight "desc" }}
+        {{ $slide_image := .Parent.Resources.GetMatch .Params.thumbNail }}
+        {{ $slide_id := .Params.id }}
+        <div class="swiper-slide" dataslideid="{{ .Params.id }}">
+          <!-- elements with  "swiper-carousel-animate-opacity" class will have animated opacity -->
+
+          <div class="map-image col-12 d-flex flex-column">
+            <img
+              class="img-fluid"
+              src="{{ $slide_image.RelPermalink }}"
+              height="{{ $slide_image.Height }} "
+              width="{{ $slide_image.Width }}" />
+              <div class="map-title position-absolute px-2 d-flex justify-content-between align-items-center align-self-end" style="bottom: -3px; height: clamp( 28px, calc(9% + 1vw),50px);  width:clamp( 200px, calc(54% + .8vw),730px)">
+                <div class="d-flex flex-column">                  
+                  <span class="text-black lh-1 p-0 m-0 " style="font-size: clamp( .15rem, calc(9% + 1vw),.85rem)">{{ .Params.title }}</span>
+                  <span class="text-nn-text-gray lh-1 p-0 m-0" style="font-size: clamp( .15rem, calc(9% + 1vw),.85rem); max-width: 45ch">{{ .Params.subtitle }}</span>
+                  
+                </div>
+                <div class="d-flex flex-column ">                  
+                  <span class="text-nn-text-gray lh-1 p-0 m-0 text-end" style="font-size:clamp( .15rem, calc(9% + 1vw),.85rem)">{{ .Params.address1 }}</span>
+                  <span class="text-nn-text-gray lh-1 p-0 m-0 text-end" style="font-size:clamp( .15rem, calc(9% + 1vw),.85rem) ;">{{ .Params.address2 }}</span>
+                </div>
+
+              </div>
+          </div>
+        </div>
+      {{ end }}
+    </div>
+
+    <!-- If we need navigation buttons -->
+    <div class="swiper-button-prev2"></div>
+    <div class="swiper-button-next2"></div>
+  </div>
+  <div class="controls position-relative w-100">
+    <!-- If we need pagination -->
+    <div class="swiper-pagination2 text-nn-light-green"></div>
+    <div class="swiper-scrollbar2"></div>
+  </div>
+</div>
+
+
+<div id="map-mobile" class="col-12 d-md-none">
+  <!-- Carousel slider -->
+
+  <div
+    class="swiper-map swiper-container position-relative overflow-hidden d-flex flex-column">
+    <div class="swiper-wrapper">
+      {{ range sort $reusablePages .Params.weight "desc" }}
+        {{ $mobile_image := .Parent.Resources.GetMatch .Params.mobileImage }}
+        {{ $slide_id := .Params.id }}
+        <div class="swiper-slide" dataslideid="{{ .Params.id }}">
+          <!-- elements with  "swiper-carousel-animate-opacity" class will have animated opacity -->
+
+          <div class="map-image col-12 position-relative" >
+            <img
+              class="img-fluid"
+              src="{{ $mobile_image.RelPermalink }}"
+              height="{{ $mobile_image.Height }} "
+              width="{{ $mobile_image.Width }}" />
+              <div class="map-title position-absolute px-2 d-flex justify-content-between align-items-center w-100 my-auto " style="bottom: 0px; height: clamp( 37px, calc(9% + 1vw),480px);">
+                <div class="d-flex flex-column">                  
+                  <span class="text-black  lh-1 p-0 m-0 " style="font-size: clamp( .15rem, calc(40% + 1vw),.89rem)">{{ .Params.title }}</span>
+                  <span class="text-nn-text-gray lh-1 p-0 m-0" style="font-size: clamp( .15rem, calc(40% + 1vw),.89rem)">{{ .Params.subtitle }}</span>
+                  
+                </div>
+                <div class="d-flex flex-column ">                  
+                  <span class="text-nn-text-gray lh-1 p-0 m-0 text-end" style="font-size: clamp( .15rem, calc(40% + 1vw),.89rem);">{{ .Params.address1 }}</span>
+                  <span class="text-nn-text-gray lh-1 p-0 m-0 text-end" style="font-size: clamp( .15rem, calc(40% + 1vw),.89rem);">{{ .Params.address2 }}</span>
+                </div>
+
+
+              </div>
+          </div>
+        </div>
+      {{ end }}
+    </div>
+
+</div>

@@ -1,0 +1,125 @@
+/* Arrows */
+
+#center {
+  .controls {
+    min-height: 50px;
+  }
+
+  .swiper-button-prev2,
+  .swiper-button-next2 {
+    position: absolute;
+    top: 50%;
+    width: 27px;
+    height: 44px;
+    margin-top: -22px;
+    z-index: 10;
+    cursor: pointer;
+    -moz-background-size: 27px 44px;
+    -webkit-background-size: 27px 44px;
+    background-size: 27px 44px;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .swiper-button-prev2.swiper-button-disabled,
+  .swiper-button-next2.swiper-button-disabled {
+    opacity: 0.35;
+    cursor: auto;
+    pointer-events: none;
+  }
+
+  .swiper-button-prev2,
+  .swiper-container-rtl .swiper-button-next2 {
+    background-image: url("/svg/left-arrow.svg");
+    left: 10px;
+    right: auto;
+  }
+  /* Pagination Styles */
+
+  .swiper-pagination {
+    position: absolute;
+    text-align: center;
+
+    -webkit-transition: 300ms;
+    -moz-transition: 300ms;
+    -o-transition: 300ms;
+    transition: 300ms;
+    -webkit-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    -o-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    z-index: 10;
+  }
+
+  .swiper-pagination-hidden {
+    opacity: 0;
+  }
+
+  .swiper-pagination {
+    bottom: 10px !important;
+    left: 0;
+    width: 100%;
+  }
+
+  .swiper-pagination .swiper-pagination-bullet {
+    margin: 0 5px;
+    background: $nn-light-green;
+  }
+
+  .swiper-pagination-progressbar.swiper-pagination-horizontal {
+    top: 20px;
+  }
+  .map-title {
+    bottom: 0;
+    height: 50px;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    width: 100%;
+  }
+}
+
+#center-mobile {
+  .controls {
+    min-height: 50px;
+  }
+
+  /* Pagination Styles */
+
+  .swiper-pagination {
+    position: absolute;
+    text-align: center;
+
+    -webkit-transition: 300ms;
+    -moz-transition: 300ms;
+    -o-transition: 300ms;
+    transition: 300ms;
+    -webkit-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    -o-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    z-index: 10;
+  }
+
+  .swiper-pagination-hidden {
+    opacity: 0;
+  }
+
+  .swiper-pagination {
+    bottom: 10px !important;
+    left: 0;
+    width: 100%;
+  }
+
+  .swiper-pagination .swiper-pagination-bullet {
+    margin: 0 5px;
+    background: $nn-light-green;
+  }
+
+  .map-title {
+    bottom: 0;
+    height: 50px;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    width: 100%;
+  }
+}

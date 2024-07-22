@@ -1,0 +1,167 @@
+{{ $reusablePages := $.Page.Resources.Match "hero-slides/slide*" }} 
+{{ $promo_image := (.Page.Resources.ByType
+"image").GetMatch "**background*" -}} 
+
+
+<style>
+  .carousel-indicators [data-bs-target] {
+    position: relative;
+    width: 10px;
+    height: 10px;
+    border: none;
+    border-radius: 100px;
+  }
+  .carousel-indicators [data-bs-target] span {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: #1e794b;
+    border-radius: inherit;
+    animation-timing-function: ease-in-out;
+    -webkit-animation-timing-function: ease-in-out;
+    transition: all ease-in-out;
+  }
+
+  .carousel-control-prev,
+  .carousel-control-next {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 5%;
+    padding: 0;
+    color: #fff;
+    text-align: center;
+    background: 0 0;
+    border: 0;
+    opacity: 0.5;
+    transition: opacity 0.15s ease;
+  }
+  .arrows {
+    left: 0;
+    right: 0;
+  }
+</style>
+
+<section id="pagehero" class="position-relative overflow-hidden">
+  <div class="position-absolute container h-100 arrows">
+    <button
+      class="carousel-control-prev"
+      type="button"
+      data-bs-target="#carouselExampleIndicators"
+      data-bs-slide="prev"
+    >
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button
+      class="carousel-control-next"
+      type="button"
+      data-bs-target="#carouselExampleIndicators"
+      data-bs-slide="next"
+    >
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  <div class="d-flex justify-content-center">
+    <div
+      id="carouselExampleIndicators"
+      class="carousel slide w-100 h-100 position-relative"
+      data-bs-ride="carousel"
+      data-bs-pause="false"
+    >
+      <div class="carousel-indicators">
+        {{ range $index, $value := $reusablePages }}
+        <button
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide-to="{{ $index }}"
+          {{
+          if
+          eq
+          $index
+          0
+          }}
+          class="active"
+          aria-current="true"
+          {{
+          end
+          }}
+          aria-label="Slide {{ add $index 1 }}"
+        >
+          <span></span>
+        </button>
+        {{ end }}
+      </div>
+
+      <div class="carousel-inner">
+        {{ range sort $reusablePages .Params.weight "desc" }} {{ $slide_image := .Parent.Resources.GetMatch
+        .Params.backgroundImage -}} {{ $slide_id := .Params.id }} {{ with $slide_image -}} {{ $slide_image_big := (.Fill
+        (printf "1296x700 %s" "center q100" )) -}} {{ $slide_image_small := (.Fill (printf "960x540 %s" "top q100" ))
+        -}} {{ $filter := images.GaussianBlur 25 }} {{ $blur_image := (.Fill (printf "960x540 %s" "top q100" )) |
+        images.Filter $filter }}
+        <link
+          rel="prefetch"
+          as="image"
+          href="https://narconon-us.b-cdn.net{{ $slide_image_small.RelPermalink }}"
+          media="(max-width: 1200px)"
+        />
+        <link
+          rel="prefetch"
+          as="image"
+          href="https://narconon-us.b-cdn.net{{ $slide_image_big.RelPermalink }}"
+          media="(min-width: 1200px)"
+        />
+        <link
+          rel="prefetch"
+          as="image"
+          href="https://narconon-us.b-cdn.net{{ $blur_image.RelPermalink }}"
+          media="(min-width: 1200px)"
+        />
+        <style>
+
+          #{{ $slide_id}} {
+            background-image:linear-gradient(0deg, rgba(0, 0, 0, 0.40) 0%, rgba(0, 0, 0, 0.40) 100%), url(https://narconon-us.b-cdn.net{{ $slide_image_small.RelPermalink }});
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+          }
+          @media only screen and (min-width: 1200px) {
+            #{{ $slide_id }} {
+              background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.40) 0%, rgba(0, 0, 0, 0.40) 100%), url(https://narconon-us.b-cdn.net{{ $slide_image_big.RelPermalink }});
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            }
+            #{{ $slide_id -}}-background-blur {
+                background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.40) 0%, rgba(0, 0, 0, 0.40) 100%), url(https://narconon-us.b-cdn.net{{ $blur_image.RelPermalink }});
+              background-repeat: no-repeat;
+              background-size: cover;
+              background-position: center;
+              }
+          }
+        </style>
+        {{ end }} {{ end }} {{ range sort $reusablePages .Params.weight "desc" }} {{ $slide_id := .Params.id }}
+        <div
+          id="{{ $slide_id -}}-background-blur"
+          data-bs-interval="10000"
+          class="container-fluid p-0 carousel-item {{ with .Params.active }}
+                            active
+                        {{ end }} "
+        >
+          <div class="container-fluid p-0" style="max-width: 1400px">
+            <div class="w-100" id="{{ .Params.id }}" style="height: 700px">{{ .Content }}</div>
+          </div>
+        </div>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</section>

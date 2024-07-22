@@ -1,2 +1,24 @@
-<h1>{{ site.Title }}</h1>
-{{ partial "menu.html" (dict "menuID" "main" "page" .) }}
+<header class="navbar navbar-expand-lg nn-navbar sticky-top">
+  <nav
+    class="container-xxl bd-gutter flex-wrap flex-lg-nowrap justify-content-center justify-content-lg-start"
+    aria-label="Main navigation"
+  >
+    <a class="navbar-brand p-0 me-0 me-lg-2" href="/" aria-label="Narconon">
+      {{ partial "narconon-logo" (dict "context" . "class" "navbar-nav-svg" "style" "height: 52px") }}
+    </a>
+    <div class="d-lg-flex d-none">{{ partial "roller" . }}</div>
+
+    <div class="collapse navbar-collapse justify-content-end" id="bdNavbar">
+      <span class="text-nn-light-green fw-bold">Hours of Operation: 24/7</span>
+      <a
+        href="tel://+18775641385"
+        class="btn btn-nn-call-now d-lg-inline-block my-2 my-md-0 ms-md-3 fw-bold"
+        href="/docs/5.1/getting-started/download/"
+      >
+        <i class="icon-phone position-relative"></i>
+        (877) 564-1385
+        <i class="icon-chevron-right"></i>
+      </a>
+    </div>
+  </nav>
+</header>

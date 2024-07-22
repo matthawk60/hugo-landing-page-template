@@ -1,0 +1,18 @@
+{{ $col_id := .Get "color" | default .Ordinal -}}
+{{ $height := .Get "height" | default "auto" -}}
+{{ $type   := .Get "type" | default "container" -}}
+{{ $max_width := .Get "max-width" }}
+{{ $class := .Get "class" | default "pb9" -}}
+{{ $isRow := .Get "row" | default "row" }}
+
+
+<div>
+  <a id="td-block-{{ .Ordinal }}" class="td-offset-anchor"></a>
+</div>
+<section class="{{ $type }} {{ $class }}">
+  <div class="{{ $isRow }} py-2">
+    {{/* Do NOT remove this comment! It ends the HTML block above. See https://spec.commonmark.org/0.30/#html-blocks, 7. */}}
+    {{ .Inner -}}
+  </div>
+</section>
+{{/* */ -}}

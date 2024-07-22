@@ -1,0 +1,20 @@
+{{ $ttype := .Page.Params.topic_meta.related_tags }}
+{{ $ttype = replace $ttype " " "-" }}
+<aside id="topic-content-widgets">
+    {{ $page := .Site.GetPage "get-help/now"}}
+    <a href="{{$page.Permalink}}" class="topic-content-widget">
+        <img class="topic-content-widget-icon" src="/img/site/helping-hand-{{ $ttype | lower}}.svg"/>
+        <div class="topic-content-widget-text">
+        <h3>Get Help Now</h3>
+        Whether you are looking for help for yourself or someone you know we are here to help.
+        </div>
+    </a>
+    {{ $page = .Site.GetPage "resources/"}}
+    <a href="{{ $page.Permalink }}" class="topic-content-widget">
+        <img class="topic-content-widget-icon" src="/img/site/more-drug-info-{{ $ttype | lower}}.svg"/>
+        <div class="topic-content-widget-text">
+        <h3>Other Drugs of Addiction</h3>
+        Our Addiction Resource Center provides information on other commonly abused drugs. 
+        </div>
+    </a>
+</aside>

@@ -1,0 +1,25 @@
+{
+      "plugins": ["prettier-plugin-go-template"],
+      "overrides": [
+            {
+                  "files": ["*.html", "*.md"],
+                  "options": {
+                        "parser": "go-template"
+                  }
+            },
+            {
+                  "files": ["*.js", "*.ts"],
+                  "options": {
+                        "useTabs": true,
+                        "printWidth": 120,
+                        "singleQuote": true
+                  }
+            }
+      ],
+      "goTemplateBracketSpacing": true,
+      "bracketSameLine": true,
+      "printWidth": 163,
+      "tabWidth": 4,
+      "singleAttributePerLine": false,
+      "htmlWhitespaceSensitivity": "ignore"
+}

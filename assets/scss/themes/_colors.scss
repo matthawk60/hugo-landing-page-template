@@ -1,0 +1,82 @@
+$nn-gray: #f9f6ed;
+$nn-light-green: #88af95;
+$nn-text-light-green: #88af95;
+$nn-text-gray: #838383;
+$nn-text-dark: #4d4d4d;
+$nn-text-black: #000000;
+$nn-text-pink: #e59696;
+$nn-logo: #687d45;
+$nn-gray-shade: #bababa;
+$image-overlay: rgba(47, 68, 40, 0.6);
+
+$white: #fff;
+$black: #000;
+$flat-gray: #f0f0f0;
+$darker-gray: #595959;
+
+// Local docs variables
+$bd-purple: #4c0bce;
+$bd-violet: lighten(
+  saturate($bd-purple, 5%),
+  15%
+); // stylelint-disable-line function-disallowed-list
+$bd-purple-light: lighten(
+  saturate($bd-purple, 5%),
+  45%
+); // stylelint-disable-line function-disallowed-list
+$bd-accent: #ffe484;
+
+$bd-gutter-x: 3rem;
+$bd-callout-variants: info, warning, danger !default;
+
+$custom-colors: (
+  "highlight-yellow": #fcff7d,
+  "highlight-green": #1e794b,
+  "highlight-bright-green": #7bcb79,
+  "info-green": #1e794b,
+  "info-gold": #c99e49,
+  "accent-gold": #ffb800,
+  "dark-gray": $nn-text-dark,
+  "nn-light-green": $nn-light-green,
+  "white": $white,
+  "black": $black,
+  "nn-gray": $nn-gray,
+  "nn-text-gray": $nn-text-gray,
+  "image-overlay": $image-overlay,
+  "flat-gray": $flat-gray,
+  "darker-gray": $darker-gray,
+  "nn-pink": $nn-text-pink,
+  "nn-gray-shade": $nn-gray-shade,
+  "nn-text-dark": $nn-text-dark,
+);
+$theme-colors: map-merge($theme-colors, $custom-colors);
+
+$nn-table-bg-scale: 0%;
+
+$custom-table-variants: (
+  "nn-info": shift-color($nn-gray, $nn-table-bg-scale),
+);
+$table-variants: map-merge($table-variants, $custom-table-variants);
+
+:root,
+[data-bs-theme="light"] {
+  --nn-gray: #{$nn-gray};
+  --nn-text-dark: #{$nn-text-dark};
+  --nn-gray-rgb: #{to-rgb($nn-gray)};
+  --bd-purple: #{$bd-purple};
+  --bd-violet: #{$bd-violet};
+  --bd-accent: #{$bd-accent};
+  --bd-violet-rgb: #{to-rgb($bd-violet)};
+  --bd-accent-rgb: #{to-rgb($bd-accent)};
+  --bd-pink-rgb: #{to-rgb($pink-500)};
+  --bd-teal-rgb: #{to-rgb($teal-500)};
+  --bd-violet-bg: var(--bd-violet);
+  --bd-toc-color: var(--bd-violet);
+  --bd-sidebar-link-bg: rgba(var(--bd-violet-rgb), 0.1);
+  --bd-callout-link: #{to-rgb($blue-600)};
+  --bd-callout-code-color: #{$pink-600};
+  --bd-pre-bg: var(--bs-tertiary-bg);
+  --nn-light-green: #{$nn-light-green};
+  --nn-light-green-rgb: #{to-rgb($nn-light-green)};
+  --nn-form-focus-shadow: 0 0 0 0.25rem rgba(var(--nn-light-green-rgb), 0.5);
+}

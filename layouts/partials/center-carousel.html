@@ -1,0 +1,81 @@
+{{ $pages := $.Page.Resources.Match "ojai-slides/slide*" }}
+{{ $reusablePages := where $pages "Params.draft" "ne" true }}
+
+
+<div
+  id="center"
+  class="col-12 d-none d-md-block"
+  style="max-width: 1450px; margin: 0 auto;">
+  <!-- Carousel slider -->
+
+  <div
+    id="swiper-center"
+    class="swiper-center swiper-container position-relative overflow-hidden d-flex flex-column">
+    <div class="swiper-wrapper">
+      {{ range sort $reusablePages .Params.weight "desc" }}
+        {{ $slide_image := .Parent.Resources.GetMatch .Params.thumbNail }}
+        {{ $slide_id := .Params.id }}
+        <div class="swiper-slide" dataslideid="{{ .Params.id }}">
+          <!-- elements with  "swiper-carousel-animate-opacity" class will have animated opacity -->
+
+          <div class="map-image col-12 d-flex flex-column">
+            <img
+              class="img-fluid"
+              src="{{ $slide_image.RelPermalink }}"
+              height="{{ $slide_image.Height }} "
+              width="{{ $slide_image.Width }}" />
+            <div
+              class="map-title position-absolute w-100 px-4 {{ with .Params.title }}
+
+                bg-black
+              {{ end }}
+               py-auto"
+              style="--bs-bg-opacity: .3;">
+              <span class="text-white align-middle ">{{ .Params.title }}</span>
+            </div>
+          </div>
+        </div>
+      {{ end }}
+    </div>
+    <!-- If we need navigation buttons -->
+    <div class="swiper-button-prev2"></div>
+    <div class="swiper-button-next2"></div>
+  </div>
+  <div class="controls position-relative w-100">
+    <!-- If we need pagination -->
+    <div
+      class="swiper-pagination3"
+      style="--swiper-pagination-color: #88af95;--swiper-pagination-progressbar-size: 8px;--swiper-pagination-progressbar-bg-color: #ffffff00; "></div>
+  </div>
+</div>
+
+<div class="col-12 d-md-none">
+  <!-- Carousel slider -->
+
+  <div
+    id="center-mobile"
+    class="swiper-center swiper-container position-relative overflow-hidden d-flex flex-column">
+    <div class="swiper-wrapper">
+      {{ range sort $reusablePages .Params.weight "desc" }}
+        {{ $mobile_image := .Parent.Resources.GetMatch .Params.thumbNail }}
+        {{ $slide_id := .Params.id }}
+        <div class="swiper-slide" dataslideid="{{ .Params.id }}">
+          <!-- elements with  "swiper-carousel-animate-opacity" class will have animated opacity -->
+
+          <div class="map-image col-12 position-relative">
+            <img
+              class="img-fluid"
+              src="{{ $mobile_image.RelPermalink }}"
+              height="{{ $mobile_image.Height }} "
+              width="{{ $mobile_image.Width }}" />
+            <div
+              class="map-title position-absolute w-100 px-4 bg-black py-auto"
+              style="--bs-bg-opacity: .3;">
+              <span class="text-white  lh-1 p-0 m-0 ">{{ .Params.title }}</span>
+            </div>
+          </div>
+        </div>
+      {{ end }}
+    </div>
+  </div>
+</div>

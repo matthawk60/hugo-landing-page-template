@@ -1,0 +1,6 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+{{ $options := dict "transpiler" "dartsass" "targetPath" "css/style.css" }} {{ $postOpts := dict "config"
+"landing-resources" }} {{ with resources.Get "scss/main.scss" | toCSS $options | postCSS $postOpts | minify |
+fingerprint }}
+<link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous" />
+{{ end }}
