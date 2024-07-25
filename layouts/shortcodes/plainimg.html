@@ -1,6 +1,8 @@
 {{ $original := resources.GetMatch (printf "**%s*" (.Get 0)) -}}
 {{ $command := .Get 1 -}}
-{{ $options := .Get 2 -}}
+{{ $options:= .Get 2 -}}
+{{ $class := .Get 3 -}}
+
 
 
 {{ if eq $command "Fit" -}}
@@ -16,7 +18,7 @@
 {{ end -}}
 {{ $image := .Scratch.Get "image" -}}
 
-    <img class="img-fluid" src="{{ $image.RelPermalink }}" width="{{ $image.Width }}" height="{{ $image.Height }}" />
+    <img class="img-fluid {{ $class }}" src="{{ $image.RelPermalink }}" width="{{ $image.Width }}" height="{{ $image.Height }}" />
 
 
 
