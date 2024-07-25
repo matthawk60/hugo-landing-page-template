@@ -1,4 +1,4 @@
-{{ $pages := $.Page.Resources.Match "ojai-slides/slide*" }}
+{{ $pages := $.Page.Resources.Match "gallery-slides/slide*" }}
 {{ $reusablePages := where $pages "Params.draft" "ne" true }}
 
 
@@ -45,7 +45,7 @@
     <!-- If we need pagination -->
     <div
       class="swiper-pagination3"
-      style="--swiper-pagination-color: #88af95;--swiper-pagination-progressbar-size: 8px;--swiper-pagination-progressbar-bg-color: #ffffff00; "></div>
+      style="--swiper-pagination-color: rgba(72, 140, 3, 1);--swiper-pagination-progressbar-size: 8px;--swiper-pagination-progressbar-bg-color: #ffffff00; "></div>
   </div>
 </div>
 

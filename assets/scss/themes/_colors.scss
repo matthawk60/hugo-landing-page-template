@@ -8,6 +8,9 @@ $nn-text-pink: #e59696;
 $nn-logo: #687d45;
 $nn-gray-shade: #bababa;
 $image-overlay: rgba(47, 68, 40, 0.6);
+$theme-blue: #0A1543;
+$theme-green: rgba(72, 140, 3, 1);
+$theme-fade-blue: rgba(107, 113, 137, 1);
 
 $white: #fff;
 $black: #000;
@@ -48,6 +51,9 @@ $custom-colors: (
   "nn-pink": $nn-text-pink,
   "nn-gray-shade": $nn-gray-shade,
   "nn-text-dark": $nn-text-dark,
+  "theme-blue": $theme-blue,
+  "theme-green": $theme-green,
+  "theme-fade-blue": $theme-fade-blue,
 );
 $theme-colors: map-merge($theme-colors, $custom-colors);
 
