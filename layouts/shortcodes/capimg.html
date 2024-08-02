@@ -1,0 +1,38 @@
+{{ $original := resources.GetMatch (printf "**%s*" (.Get 0)) -}}
+{{ $command := .Get 1 -}}
+{{ $options:= .Get 2 -}}
+{{ $class := .Get 3 -}}
+{{ $caption := .Get 4 -}}
+
+
+
+{{ if eq $command "Fit" -}}
+    {{ .Scratch.Set "image" ($original.Fit $options) -}}
+{{ else if eq $command "Resize" -}}
+    {{ .Scratch.Set "image" ($original.Resize $options) -}}
+{{ else if eq $command "Fill" -}}
+    {{ .Scratch.Set "image" ($original.Fill $options) -}}
+{{ else if eq $command "Crop" -}}
+    {{ .Scratch.Set "image" ($original.Crop $options) -}}
+{{ else -}}
+    {{ errorf "Invalid image processing command: Must be one of Fit, Fill, Crop or Resize." -}}
+{{ end -}}
+{{ $image := .Scratch.Get "image" -}}
+
+    {{/*  <img class="img-fluid {{ $class }}" src="{{ $image.RelPermalink }}" width="{{ $image.Width }}" height="{{ $image.Height }}" />  */}}
+
+
+
+{{/* Do **not** remove this comment! It ends above html block! See https://spec.commonmark.org/0.30/#html-blocks, 7. */}}
+<!-- image -->
+<figure {{ with $class }}class="{{ . }}"{{ end }}>
+
+      <img class="img-fluid {{ $class }}" src="{{ $image.RelPermalink }}" width="{{ $image.Width }}" height="{{ $image.Height }}" />
+  
+      {{ with $caption }}
+        <figcaption class="text-center text-xl-start pt-2">
+            {{ .}}
+        </figcaption>
+    {{ end }}
+  </figure>
+  <!-- image -->
