@@ -1,5 +1,5 @@
 .nn-navbar {
-    padding: 1rem 0;
+    padding: 0;
     background-color: transparent;
     box-shadow:
         0 0.5rem 1rem rgba($black, 0.15),
@@ -40,8 +40,8 @@
     }
 
     .navbar-brand {
-        max-height: 58px;
-        margin-top: -6px;
+        height: 80px;
+      
     }
 
     .navbar-toggler,
